@@ -156,7 +156,8 @@
                     <h2 id="workout-title" class="text-xl font-bold text-gray-800 mb-4 text-center"></h2>
                     <p class="text-sm text-gray-500 mb-4 text-center">Log weight (kg) and reps for each set. Tick if completed (Progressive Overload).</p>
                     <div id="workout-list">
-                        </div>
+                        <!-- Workout fields will be rendered here -->
+                    </div>
                     <div class="mt-6 pt-4 border-t border-dashed border-gray-300">
                         <p class="text-lg font-semibold text-gray-700">Total Calories Burned (Estimate):</p>
                         <p id="total-calories-burned" class="text-2xl font-extrabold text-red-500 mt-1">0 kcal</p>
@@ -173,26 +174,26 @@
                     <form id="food-form" class="space-y-3">
                         <div>
                             <label for="food-name" class="block text-sm font-medium text-gray-700">Food Item Name (e.g., MyFitnessPal entry)</label>
-                            <input type="text" id="food-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="e.g., Chicken Breast, 200g">
+                            <input type="text" id="food-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="e.g., Chicken Breast, 200g" required>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label for="food-calories" class="block text-sm font-medium text-gray-700">Calories (kcal)</label>
-                                <input type="number" id="food-calories" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="300">
+                                <input type="number" id="food-calories" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="300" required>
                             </div>
                             <div>
                                 <label for="food-protein" class="block text-sm font-medium text-gray-700">Protein (g)</label>
-                                <input type="number" id="food-protein" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="30">
+                                <input type="number" id="food-protein" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="30" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label for="food-carbs" class="block text-sm font-medium text-gray-700">Carbs (g)</label>
-                                <input type="number" id="food-carbs" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="25">
+                                <input type="number" id="food-carbs" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="25" required>
                             </div>
                             <div>
                                 <label for="food-fat" class="block text-sm font-medium text-gray-700">Fat (g)</label>
-                                <input type="number" id="food-fat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="10">
+                                <input type="number" id="food-fat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-red-500 focus:border-red-500" placeholder="10" required>
                             </div>
                         </div>
                         <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded-lg transition duration-300 shadow-md">
@@ -228,7 +229,7 @@
                     <form id="steps-form" class="space-y-4 max-w-sm mx-auto">
                         <div>
                             <label for="step-count" class="block text-lg font-medium text-gray-700">Total Steps Logged</label>
-                            <input type="number" id="step-count" class="mt-1 block w-full text-center text-xl rounded-md border-gray-300 shadow-sm p-3 border focus:ring-red-500 focus:border-red-500" placeholder="e.g., 10000">
+                            <input type="number" id="step-count" class="mt-1 block w-full text-center text-xl rounded-md border-gray-300 shadow-sm p-3 border focus:ring-red-500 focus:border-red-500" placeholder="e.g., 10000" required>
                         </div>
                         <div>
                             <label for="step-calories" class="block text-lg font-medium text-gray-700">Calories Burned (Estimated)</label>
@@ -308,43 +309,53 @@
             { name: "Plank (30-60s hold)", sets: 3, majorGroup: "Core Stability" }
         ];
 
-        // MALE Workout Definitions (Lazy Lifter Basic)
+        // --- MALE Workout Definitions (Lazy Lifter A/B/C Split) ---
         const WORKOUTS_MALE = {
             A: [
-                { name: "Barbell Squat", sets: 3, majorGroup: "Legs/Core" },
-                { name: "Bench Press", sets: 3, majorGroup: "Chest/Triceps" },
-                { name: "Barbell Row", sets: 3, majorGroup: "Back/Biceps" },
-                { name: "Overhead Press", sets: 3, majorGroup: "Shoulders/Triceps" },
-                { name: "Bicep Curl (DB)", sets: 3, majorGroup: "Biceps (Accessory)" },
-                ...ABS_EXERCISES
+                { name: "Barbell Squat", sets: 3, majorGroup: "Heavy Lower" },
+                { name: "Barbell Bench Press", sets: 3, majorGroup: "Horizontal Press" },
+                { name: "Barbell Bent-Over Row", sets: 3, majorGroup: "Back Thickness" },
+                { name: "Overhead Dumbbell Triceps Extension", sets: 3, majorGroup: "Triceps Accessory" },
+                { name: "Hanging Leg Raise", sets: 3, majorGroup: "Core" }
             ],
             B: [
-                { name: "Deadlifts", sets: 3, majorGroup: "Back/Legs/Core" },
-                { name: "Lat Pulldown/Pull-up", sets: 3, majorGroup: "Back/Biceps" },
-                { name: "Incline DB Press", sets: 3, majorGroup: "Chest/Shoulders" },
-                { name: "Leg Press/Lunges", sets: 3, majorGroup: "Legs" },
-                { name: "Triceps Pushdown", sets: 3, majorGroup: "Triceps (Accessory)" },
-                ...ABS_EXERCISES
+                { name: "Deadlift", sets: 3, majorGroup: "Heavy Hinge" },
+                { name: "Barbell Overhead Press", sets: 3, majorGroup: "Vertical Press" },
+                { name: "Lat Pulldown / Pull-up", sets: 3, majorGroup: "Back Width" },
+                { name: "Dumbbell Walking Lunge", sets: 3, majorGroup: "Legs Volume" },
+                { name: "Dumbbell Biceps Curl", sets: 3, majorGroup: "Biceps Accessory" }
+            ],
+            C: [
+                { name: "Incline Dumbbell Press", sets: 3, majorGroup: "Chest Volume" },
+                { name: "Seated Cable Row", sets: 3, majorGroup: "Back Volume" },
+                { name: "Leg Press / Hack Squat", sets: 3, majorGroup: "Lower Volume" },
+                { name: "Side Lateral Raise (DB)", sets: 3, majorGroup: "Shoulder Isolation" },
+                { name: "Face Pulls", sets: 3, majorGroup: "Shoulder Health" }
             ]
         };
 
-        // FEMALE Workout Definitions (Adapted Lazy Lifter Women's Basic - Glute/Hip Focus)
+        // --- FEMALE Workout Definitions (Lazy Lifter A/B/C Split - Glute/Hip Focus) ---
         const WORKOUTS_FEMALE = {
             A: [
-                { name: "Barbell Squat", sets: 3, majorGroup: "Legs/Glutes" },
-                { name: "Bench Press (DB/Machine)", sets: 3, majorGroup: "Chest/Triceps" },
-                { name: "Barbell Row (Supported)", sets: 3, majorGroup: "Back/Biceps" },
-                { name: "Hip Thrusts (Barbell)", sets: 3, majorGroup: "Glutes/Hips" }, 
-                { name: "Lateral Raises (DB)", sets: 3, majorGroup: "Shoulders (Accessory)" }, 
-                ...ABS_EXERCISES
+                { name: "Barbell Squat", sets: 3, majorGroup: "Heavy Quads/Glutes" },
+                { name: "Dumbbell Bench Press", sets: 3, majorGroup: "Upper Body Press" },
+                { name: "Barbell Row (Supported)", sets: 3, majorGroup: "Back Thickness" },
+                { name: "Barbell Hip Thrusts", sets: 3, majorGroup: "Heavy Glute Isolation" },
+                { name: "Lateral Raises (DB)", sets: 3, majorGroup: "Shoulder Isolation" }
             ],
             B: [
-                { name: "Romanian Deadlifts", sets: 3, majorGroup: "Hamstrings/Glutes" }, 
-                { name: "Lat Pulldown", sets: 3, majorGroup: "Back/Biceps" },
-                { name: "Overhead Press (DB/Machine)", sets: 3, majorGroup: "Shoulders/Triceps" },
-                { name: "Leg Extension / Curl (Superset)", sets: 3, majorGroup: "Legs (Quads/Hams)" }, 
-                { name: "Face Pulls", sets: 3, majorGroup: "Shoulders/Back (Accessory)" }, 
-                ...ABS_EXERCISES
+                { name: "Romanian Deadlifts (RDL)", sets: 3, majorGroup: "Hamstrings/Glutes Hinge" },
+                { name: "Lat Pulldown", sets: 3, majorGroup: "Back Width" },
+                { name: "Seated Overhead Press (DB)", sets: 3, majorGroup: "Shoulder Press" },
+                { name: "Leg Extension / Curl (Superset)", sets: 3, majorGroup: "Legs Isolation" },
+                { name: "Triceps Pushdown", sets: 3, majorGroup: "Triceps Accessory" }
+            ],
+            C: [
+                { name: "Cable Glute Kickbacks (per leg)", sets: 3, majorGroup: "Glute Volume" },
+                { name: "Split Squats (DB/Barbell)", sets: 3, majorGroup: "Legs Unilateral" },
+                { name: "Single-Arm Dumbbell Row", sets: 3, majorGroup: "Back Volume" },
+                { name: "Shoulder Press Machine", sets: 3, majorGroup: "Shoulder Volume" },
+                { name: "Calf Raises / Ab Crunches", sets: 3, majorGroup: "Accessory/Core" }
             ]
         };
 
@@ -382,7 +393,7 @@
                 allDailyLogs[dayStr] = {
                     foodLog: [], 
                     stepLog: { steps: '', calories: '' }, 
-                    workoutLogs: {}
+                    workoutLogs: {} // key: 'exName_day_type_gender', value: [{kg, reps, done}, ...]
                 };
             }
             return allDailyLogs[dayStr];
@@ -468,9 +479,9 @@
                 selectorContainer.appendChild(button);
             }
             
-            const activeDayButton = selectorContainer.querySelector('.day-button.active');
+            const activeDayButton = selectorContainer.querySelector(`[data-day="${selectedDay}"]`);
             if (activeDayButton) {
-                activeDayButton.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+                activeDayButton.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
             }
         }
 
@@ -504,21 +515,25 @@
         // --- EXERCISE TRACKING LOGIC ---
 
         function getCurrentWorkoutType(day) {
-            // Lazy Lifter 3x/week split logic: Workouts on Day 1, 3, 5, 7, 9, 11, 13...
-            // Use mod 4 to alternate A/B every two days
-            const mod = (day - 1) % 4; 
-            
-            const routine = (currentGender === 'male') ? WORKOUTS_MALE : WORKOUTS_FEMALE;
+            // Lazy Lifter A/B/C rotation (3x/week schedule: A, Rest, B, Rest, C, Rest, Rest)
+            const cycleDay = (day - 1) % 7; // 0 to 6
 
-            if (mod === 0 || mod === 2) { 
-                const workoutKey = (day % 2 !== 0) ? 'A' : 'B';
-                return { 
-                    type: workoutKey, 
-                    exercises: routine[workoutKey] 
-                };
+            // Defines the rotation sequence: A/R/B/R/C/R/R
+            const schedule = ['A', 'R', 'B', 'R', 'C', 'R', 'R'];
+            const workoutKey = schedule[cycleDay];
+
+            if (workoutKey === 'R') {
+                return { type: 'Rest Day (R)', exercises: [] };
             }
-            
-            return { type: 'Rest Day', exercises: [] };
+
+            const routine = (currentGender === 'male') ? WORKOUTS_MALE : WORKOUTS_FEMALE;
+            // Include core exercises for all lifting days (A, B, C)
+            const liftExercises = [...routine[workoutKey], ...ABS_EXERCISES];
+
+            return {
+                type: `Workout ${workoutKey}`,
+                exercises: liftExercises
+            };
         }
 
         function calculateWorkoutKcal(workoutLogs) {
@@ -528,19 +543,44 @@
 
             for (const exKey in workoutLogs) {
                 if (workoutLogs.hasOwnProperty(exKey)) {
-                    workoutLogs[exKey].forEach(logItem => {
-                        if (logItem && logItem.done) {
-                            totalSetsCompleted++;
-                            const weight = parseFloat(logItem.kg) || 0;
-                            const reps = parseInt(logItem.reps) || 0;
-                            totalWeightLifted += weight * reps;
-                        }
-                    });
+                    // Filter out non-lifting days where the key might be missing but loop runs
+                    if (WORKOUTS_MALE.hasOwnProperty(exKey.charAt(9)) || WORKOUTS_FEMALE.hasOwnProperty(exKey.charAt(9))) {
+                        workoutLogs[exKey].forEach(logItem => {
+                            if (logItem && logItem.done) {
+                                totalSetsCompleted++;
+                                const weight = parseFloat(logItem.kg) || 0;
+                                const reps = parseInt(logItem.reps) || 0;
+                                totalWeightLifted += weight * reps;
+                            }
+                        });
+                    }
                 }
             }
 
             totalKcal = (totalSetsCompleted * EXERCISE_CALORIE_MULTIPLIER) + (totalWeightLifted / WEIGHT_CALORIE_DIVISOR);
             return Math.round(totalKcal);
+        }
+
+        function saveWorkoutLog(exKey, setIndex, field, value) {
+            const log = getLogForDay(selectedDay);
+            if (!log.workoutLogs[exKey]) {
+                log.workoutLogs[exKey] = [];
+            }
+            
+            // Initialize the set log if it doesn't exist
+            if (!log.workoutLogs[exKey][setIndex]) {
+                log.workoutLogs[exKey][setIndex] = { kg: '', reps: '', done: false };
+            }
+
+            // Update the specific field
+            if (field === 'done') {
+                log.workoutLogs[exKey][setIndex].done = value;
+            } else {
+                log.workoutLogs[exKey][setIndex][field] = value;
+            }
+
+            saveAllLogs();
+            renderSummary(); // Update Kcal calculation immediately
         }
 
         function renderWorkout() {
@@ -554,36 +594,55 @@
             const totalKcal = calculateWorkoutKcal(currentWorkoutLogs);
             const genderTag = currentGender === 'male' ? 'Male' : 'Female';
 
-            if (workout.type === 'Rest Day') {
-                 titleElement.textContent = `Day ${selectedDay}: REST DAY / CARDIO`;
-                 listContainer.innerHTML = '<p class="text-center text-gray-500 p-4">Focus on recovery or light cardio. Head over to the Steps tab!</p>';
+            if (workout.type === 'Rest Day (R)') {
+                 titleElement.textContent = `Day ${selectedDay}: REST DAY / CARDIO (R)`;
+                 listContainer.innerHTML = '<p class="text-center text-gray-500 p-4 font-semibold">Today is a scheduled REST or CARDIO day. Focus on getting your steps in! (See Steps Tab)</p>';
                  document.getElementById('total-calories-burned').textContent = '0 kcal';
                  return;
             }
 
-            titleElement.textContent = `Day ${selectedDay}: ${genderTag} Workout ${workout.type}`;
+            titleElement.textContent = `Day ${selectedDay}: ${genderTag} ${workout.type}`;
 
             let html = '';
             workout.exercises.forEach((ex) => {
-                // MODIFICATION: Key must include Day and Gender for uniqueness
-                const exKey = `${ex.name}_${selectedDay}_${workout.type}_${currentGender}`; 
+                // Key includes Day and Gender for uniqueness: exName_DayX_WorkoutY_GenderZ
+                const exKey = `${ex.name.replace(/[^a-zA-Z0-9]/g, '')}_${selectedDay}_${workout.type.replace('Workout ', '')}_${currentGender}`; 
                 const exLogs = currentWorkoutLogs[exKey] || [];
                 
                 html += `<div class="p-3 mb-4 rounded-lg bg-gray-50 border border-gray-200">
-                            <h4 class="font-bold text-gray-800 mb-2">${ex.name} <span class="text-xs font-normal text-red-500">(${ex.majorGroup})</span></h4>`;
-                
+                    <h3 class="font-bold text-base text-gray-800">${ex.name}</h3>
+                    <p class="text-xs text-red-500 mb-2">${ex.majorGroup} (${ex.sets} sets)</p>
+                `;
+
                 for (let i = 0; i < ex.sets; i++) {
-                    const logItem = exLogs[i] || { kg: '', reps: '', done: false };
+                    const setLog = exLogs[i] || { kg: '', reps: '', done: false };
                     
-                    html += `<div class="flex items-center space-x-2 mb-2">
-                                <span class="w-8 font-medium text-gray-600">Set ${i + 1}:</span>
-                                <input type="number" data-ex="${exKey}" data-set="${i}" data-field="kg" value="${logItem.kg}" placeholder="KG" class="w-1/4 p-2 text-center border rounded-md text-sm focus:ring-red-500" oninput="updateWorkoutLog(this)">
-                                <input type="number" data-ex="${exKey}" data-set="${i}" data-field="reps" value="${logItem.reps}" placeholder="Reps" class="w-1/4 p-2 text-center border rounded-md text-sm focus:ring-red-500" oninput="updateWorkoutLog(this)">
-                                <label class="flex items-center space-x-2 ml-auto cursor-pointer">
-                                    <span class="text-sm">Done</span>
-                                    <input type="checkbox" data-ex="${exKey}" data-set="${i}" data-field="done" ${logItem.done ? 'checked' : ''} class="w-5 h-5 text-red-600 rounded focus:ring-red-500" onclick="updateWorkoutLog(this)">
-                                </label>
-                            </div>`;
+                    html += `
+                        <div class="flex items-center space-x-2 py-1 border-t border-gray-100">
+                            <span class="text-xs font-semibold w-8 text-gray-600">Set ${i + 1}</span>
+                            
+                            <input type="number" 
+                                class="w-1/3 px-2 py-1 text-sm border rounded focus:ring-red-500" 
+                                placeholder="Weight (kg)" 
+                                value="${setLog.kg}"
+                                oninput="saveWorkoutLog('${exKey}', ${i}, 'kg', this.value)"
+                            >
+                            <input type="number" 
+                                class="w-1/4 px-2 py-1 text-sm border rounded focus:ring-red-500" 
+                                placeholder="Reps" 
+                                value="${setLog.reps}"
+                                oninput="saveWorkoutLog('${exKey}', ${i}, 'reps', this.value)"
+                            >
+                            <label class="flex items-center space-x-1 ml-auto">
+                                <input type="checkbox" 
+                                    class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
+                                    ${setLog.done ? 'checked' : ''}
+                                    onchange="saveWorkoutLog('${exKey}', ${i}, 'done', this.checked)"
+                                >
+                                <span class="text-xs text-gray-600">Done</span>
+                            </label>
+                        </div>
+                    `;
                 }
                 html += `</div>`;
             });
@@ -592,315 +651,258 @@
             document.getElementById('total-calories-burned').textContent = `${totalKcal} kcal`;
         }
 
-        window.updateWorkoutLog = (input) => {
+        // --- FOOD TRACKING LOGIC ---
+
+        function renderFood() {
             const log = getLogForDay(selectedDay);
-            const currentWorkoutLogs = log.workoutLogs;
+            const foodLogContainer = document.getElementById('food-log');
             
-            const exKey = input.getAttribute('data-ex');
-            const setIndex = parseInt(input.getAttribute('data-set'));
-            const field = input.getAttribute('data-field');
+            let totalKcal = 0, totalProtein = 0, totalCarbs = 0, totalFat = 0;
             
-            if (!currentWorkoutLogs[exKey]) currentWorkoutLogs[exKey] = [];
-            if (!currentWorkoutLogs[exKey][setIndex]) {
-                currentWorkoutLogs[exKey][setIndex] = { kg: '', reps: '', done: false };
-            }
-            
-            if (field === 'done') {
-                currentWorkoutLogs[exKey][setIndex][field] = input.checked;
+            if (log.foodLog.length === 0) {
+                foodLogContainer.innerHTML = '<p class="text-gray-500 text-center py-4">No food logged for this day yet.</p>';
             } else {
-                currentWorkoutLogs[exKey][setIndex][field] = input.value;
-            }
-
-            saveAllLogs();
-            // Recalculate and update the calorie count
-            const totalKcal = calculateWorkoutKcal(currentWorkoutLogs);
-            document.getElementById('total-calories-burned').textContent = `${totalKcal} kcal`;
-            // Also update the summary view if it's the active tab
-            if (document.getElementById('summary').classList.contains('active') || !document.getElementById('summary').classList.contains('hidden')) {
-                renderSummary();
-            }
-        };
-
-
-        // --- FOOD TRACKING LOGIC (No changes needed) ---
-
-        function calculateMacroTotals(foodLog) {
-            let totalC = 0, totalP = 0, totalF = 0, totalK = 0;
-            foodLog.forEach(item => {
-                totalK += parseInt(item.calories) || 0;
-                totalP += parseInt(item.protein) || 0;
-                totalC += parseInt(item.carbs) || 0;
-                totalF += parseInt(item.fat) || 0;
-            });
-            return { totalK, totalP, totalC, totalF };
-        }
-
-        function renderFoodLog() {
-            const log = getLogForDay(selectedDay);
-            const foodLog = log.foodLog;
-            
-            const logContainer = document.getElementById('food-log');
-            const totalKcal = document.getElementById('total-kcal');
-            const totalProtein = document.getElementById('total-protein');
-            const totalCarbs = document.getElementById('total-carbs');
-            const totalFat = document.getElementById('total-fat');
-            
-            const totals = calculateMacroTotals(foodLog);
-            
-            if (foodLog.length === 0) {
-                logContainer.innerHTML = '<p class="text-center text-gray-500 pt-2">No food logged yet for this day.</p>';
-            } else {
-                logContainer.innerHTML = foodLog.map((item, index) => {
-                    const kc = parseInt(item.calories) || 0;
-                    const p = parseInt(item.protein) || 0;
-                    const c = parseInt(item.carbs) || 0;
-                    const f = parseInt(item.fat) || 0;
-
-                    return `<div class="flex items-center justify-between p-2 bg-white rounded-lg border">
-                        <span class="font-medium text-gray-700 w-1/2 overflow-hidden text-ellipsis whitespace-nowrap">${item.name}</span>
-                        <span class="text-xs text-red-500 font-bold">${kc}kcal</span>
-                        <span class="text-xs text-blue-500 font-medium">${p}P</span>
-                        <span class="text-xs text-green-500 font-medium">${c}C</span>
-                        <span class="text-xs text-yellow-500 font-medium">${f}F</span>
-                        <button onclick="deleteFoodItem(${index})" class="text-xs text-gray-400 hover:text-red-500 transition ml-2">❌</button>
-                    </div>`;
+                foodLogContainer.innerHTML = log.foodLog.map((item, index) => {
+                    totalKcal += parseFloat(item.calories) || 0;
+                    totalProtein += parseFloat(item.protein) || 0;
+                    totalCarbs += parseFloat(item.carbs) || 0;
+                    totalFat += parseFloat(item.fat) || 0;
+                    
+                    return `
+                        <div class="bg-white p-3 border rounded-lg flex justify-between items-center shadow-sm">
+                            <div>
+                                <p class="font-semibold text-gray-800">${item.name}</p>
+                                <p class="text-xs text-gray-500">${item.calories} kcal | P:${item.protein}g | C:${item.carbs}g | F:${item.fat}g</p>
+                            </div>
+                            <button onclick="deleteFoodItem(${index})" class="text-red-500 hover:text-red-700 text-lg">
+                                &times;
+                            </button>
+                        </div>
+                    `;
                 }).join('');
             }
             
-            totalKcal.textContent = totals.totalK;
-            totalProtein.textContent = totals.totalP;
-            totalCarbs.textContent = totals.totalC;
-            totalFat.textContent = totals.totalF;
-
-            // Also update the summary view if it's the active tab
-            if (document.getElementById('summary').classList.contains('active') || !document.getElementById('summary').classList.contains('hidden')) {
-                renderSummary();
-            }
+            document.getElementById('total-kcal').textContent = Math.round(totalKcal);
+            document.getElementById('total-protein').textContent = Math.round(totalProtein);
+            document.getElementById('total-carbs').textContent = Math.round(totalCarbs);
+            document.getElementById('total-fat').textContent = Math.round(totalFat);
         }
-        
-        window.deleteFoodItem = (index) => {
+
+        function deleteFoodItem(index) {
             const log = getLogForDay(selectedDay);
             log.foodLog.splice(index, 1);
             saveAllLogs();
-            renderFoodLog();
+            renderFood();
+            renderSummary(); 
         }
 
-        document.getElementById('food-form').addEventListener('submit', (e) => {
+        document.getElementById('food-form').onsubmit = function(e) {
             e.preventDefault();
-            const name = document.getElementById('food-name').value.trim();
-            const calories = document.getElementById('food-calories').value.trim() || 0;
-            const protein = document.getElementById('food-protein').value.trim() || 0;
-            const carbs = document.getElementById('food-carbs').value.trim() || 0;
-            const fat = document.getElementById('food-fat').value.trim() || 0;
-
-            if (!name) {
-                showErrorModal("Please enter a name for the food item.");
-                return;
-            }
-            
             const log = getLogForDay(selectedDay);
-            log.foodLog.push({ name, calories, protein, carbs, fat });
             
+            const newFoodItem = {
+                name: document.getElementById('food-name').value.trim(),
+                calories: document.getElementById('food-calories').value,
+                protein: document.getElementById('food-protein').value,
+                carbs: document.getElementById('food-carbs').value,
+                fat: document.getElementById('food-fat').value,
+            };
+
+            log.foodLog.push(newFoodItem);
             saveAllLogs();
-            e.target.reset(); // Clear form
-            renderFoodLog();
-        });
+            
+            // Clear form
+            this.reset();
+            renderFood();
+            renderSummary(); 
+        };
 
-        // --- STEPS TRACKING LOGIC (No changes needed) ---
-        
-        function renderStepsContent() {
+        // --- STEPS TRACKING LOGIC ---
+
+        function renderSteps() {
             const log = getLogForDay(selectedDay);
-            const stepLog = log.stepLog;
+            const stepGoal = getDailyStepGoal(selectedDay, currentGoal);
             
-            const dailyStepGoal = getDailyStepGoal(selectedDay, currentGoal);
-            document.getElementById('recommended-steps').textContent = `Progressive Step Goal: ${dailyStepGoal.toLocaleString()} steps`;
-            
-            document.getElementById('step-count').value = stepLog.steps || '';
-            document.getElementById('step-calories').value = stepLog.calories || '';
-
-             // Also update the summary view if it's the active tab
-            if (document.getElementById('summary').classList.contains('active') || !document.getElementById('summary').classList.contains('hidden')) {
-                renderSummary();
-            }
+            document.getElementById('recommended-steps').textContent = `Target Steps: ${stepGoal.toLocaleString()} steps`;
+            document.getElementById('step-count').value = log.stepLog.steps;
+            document.getElementById('step-calories').value = log.stepLog.calories;
         }
 
-        document.getElementById('steps-form').addEventListener('submit', (e) => {
+        document.getElementById('steps-form').onsubmit = function(e) {
             e.preventDefault();
-            let steps = parseInt(document.getElementById('step-count').value.trim()) || 0;
-            let caloriesInput = document.getElementById('step-calories').value.trim();
-            let calories = parseInt(caloriesInput) || 0;
+            const log = getLogForDay(selectedDay);
             
-            // Auto-calculate calories if steps > 0 and calorie input is empty
-            if (steps > 0 && !caloriesInput) {
+            const steps = parseInt(document.getElementById('step-count').value) || 0;
+            let calories = parseInt(document.getElementById('step-calories').value) || 0;
+
+            // If user did not provide calories, calculate an estimate
+            if (!calories) {
                 calories = Math.round(steps * CAL_PER_STEP);
-                showErrorModal(`Step Calories estimated at ${calories} kcal (based on steps * ${CAL_PER_STEP}).`);
-            } else if (!steps) {
-                 showErrorModal("Please enter your step count.");
-                 return;
+                // Update the field to show the estimated value
+                document.getElementById('step-calories').value = calories;
             }
-            
-            const log = getLogForDay(selectedDay);
-            // Save the possibly auto-calculated calorie value
-            log.stepLog = { steps, calories }; 
-            
+
+            log.stepLog.steps = steps;
+            log.stepLog.calories = calories;
+
             saveAllLogs();
-            renderStepsContent();
-            showErrorModal(`Steps (${steps} steps) and calories saved for Day ${selectedDay}.`);
-        });
-        
-        // --- SUMMARY RENDERING LOGIC (No changes needed) ---
-        
+            showErrorModal(`Steps logged: ${steps.toLocaleString()} steps (${calories} kcal).`);
+            renderSummary();
+        };
+
+        // --- SUMMARY LOGIC ---
+
         function renderSummary() {
             const log = getLogForDay(selectedDay);
-            const currentGoalData = MACRO_GOALS[currentGoal];
-            const dailyStepGoal = getDailyStepGoal(selectedDay, currentGoal);
-            
-            // 1. Get Logged Data
-            const totals = calculateMacroTotals(log.foodLog);
+            const foodTotal = log.foodLog.reduce((acc, item) => ({
+                kcal: acc.kcal + (parseFloat(item.calories) || 0),
+                protein: acc.protein + (parseFloat(item.protein) || 0),
+                carbs: acc.carbs + (parseFloat(item.carbs) || 0),
+                fat: acc.fat + (parseFloat(item.fat) || 0),
+            }), { kcal: 0, protein: 0, carbs: 0, fat: 0 });
+
             const workoutKcal = calculateWorkoutKcal(log.workoutLogs);
-            const workoutType = getCurrentWorkoutType(selectedDay);
-            const stepCount = parseInt(log.stepLog.steps) || 0;
             const stepKcal = parseInt(log.stepLog.calories) || 0;
+            const stepActual = parseInt(log.stepLog.steps) || 0;
+            const stepGoal = getDailyStepGoal(selectedDay, currentGoal);
 
-            // 2. Calculate Goals (Macros based on Kcal goal)
-            const proteinGoal = Math.round((currentGoalData.kcal * (currentGoalData.p_percent / 100)) / 4); // 4 kcal/g
-            const carbsGoal = Math.round((currentGoalData.kcal * (currentGoalData.c_percent / 100)) / 4); // 4 kcal/g
-            const fatGoal = Math.round((currentGoalData.kcal * (currentGoalData.f_percent / 100)) / 9); // 9 kcal/g
-
-            // 3. Update UI - Goals
-            document.getElementById('summary-goal-text').textContent = currentGoal.toUpperCase();
-            document.getElementById('summary-gender-text').textContent = currentGender.toUpperCase();
+            const workout = getCurrentWorkoutType(selectedDay);
             
+            // Macro Goals Calculation (Based on percentage of goal KCAL)
+            const goalConfig = MACRO_GOALS[currentGoal];
+            const goalKcal = goalConfig.kcal;
+            // 1g Protein/Carb = 4kcal, 1g Fat = 9kcal
+            const goalProtein = Math.round((goalKcal * goalConfig.p_percent / 100) / 4);
+            const goalCarbs = Math.round((goalKcal * goalConfig.c_percent / 100) / 4);
+            const goalFat = Math.round((goalKcal * goalConfig.f_percent / 100) / 9);
+
+            // Populate Macro Goals
             document.getElementById('summary-macro-goals').innerHTML = `
-                <span class="text-red-500">KCAL Target: ${currentGoalData.kcal}</span>
-                <span class="text-blue-500">P Target: ${proteinGoal}g</span>
-                <span class="text-green-500">C Target: ${carbsGoal}g</span>
-                <span class="text-yellow-500">F Target: ${fatGoal}g</span>
+                 <span class="text-red-500">KCAL Target: ${goalKcal}</span>
+                 <span class="text-blue-500">P Target: ${goalProtein}g</span>
+                 <span class="text-green-500">C Target: ${goalCarbs}g</span>
+                 <span class="text-yellow-500">F Target: ${goalFat}g</span>
             `;
 
-            // 4. Update UI - Actuals
-            document.getElementById('actual-kcal').textContent = totals.totalK;
-            document.getElementById('actual-protein').textContent = totals.totalP;
-            document.getElementById('actual-carbs').textContent = totals.totalC;
-            document.getElementById('actual-fat').textContent = totals.totalF;
-
-            // 5. Update UI - Steps
-            const stepCompletion = Math.min(100, Math.round((stepCount / dailyStepGoal) * 100));
-            document.getElementById('summary-steps-actual').textContent = stepCount.toLocaleString();
-            document.getElementById('summary-steps-goal').textContent = dailyStepGoal.toLocaleString();
-            document.getElementById('summary-steps-kcal').textContent = `${stepKcal} kcal`;
-            document.getElementById('progress-steps').style.width = `${stepCompletion}%`;
-            document.getElementById('progress-steps').className = `progress-bar ${stepCompletion >= 100 ? 'bg-emerald-500' : 'bg-yellow-500'}`;
-
-            // 6. Update UI - Workout
-            document.getElementById('summary-workout-type').textContent = `Routine: ${workoutType.type === 'Rest Day' ? 'Rest Day' : `${currentGender === 'male' ? 'Male' : 'Female'} Workout ${workoutType.type}`}`;
+            // Populate Macro Actuals
+            document.getElementById('actual-kcal').textContent = Math.round(foodTotal.kcal);
+            document.getElementById('actual-protein').textContent = Math.round(foodTotal.protein);
+            document.getElementById('actual-carbs').textContent = Math.round(foodTotal.carbs);
+            document.getElementById('actual-fat').textContent = Math.round(foodTotal.fat);
             
-            let completedSets = 0;
-            let totalSets = 0;
-            if (workoutType.type !== 'Rest Day') {
-                 workoutType.exercises.forEach(ex => totalSets += ex.sets);
-                 for (const exKey in log.workoutLogs) {
-                    // Check if the log key matches the current day, workout type, and gender to ensure accuracy
-                    const expectedKeyPart = `_${selectedDay}_${workoutType.type}_${currentGender}`;
-                    if (log.workoutLogs.hasOwnProperty(exKey) && exKey.includes(expectedKeyPart)) {
-                        log.workoutLogs[exKey].forEach(logItem => {
-                            if (logItem && logItem.done) completedSets++;
-                        });
-                    }
-                }
-            }
-            
-            const workoutStatus = workoutType.type === 'Rest Day' 
-                ? 'N/A' 
-                : `${completedSets} / ${totalSets} Sets Completed`;
-
-            document.getElementById('summary-workout-sets').textContent = `Sets: ${workoutStatus}`;
+            // Populate Workout Status
+            document.getElementById('summary-workout-type').textContent = `${workout.type}`;
+            document.getElementById('summary-workout-sets').textContent = (workout.type === 'Rest Day (R)') 
+                ? 'Scheduled for Active Recovery / Steps.' 
+                : `${workout.exercises.length} Exercises Scheduled.`;
             document.getElementById('summary-workout-kcal').textContent = `${workoutKcal} kcal`;
-        }
-        
-        // --- TAB & SNAPSHOT LOGIC ---
 
-        function switchTab(targetId) {
+            // Populate Step Progress
+            document.getElementById('summary-steps-actual').textContent = stepActual.toLocaleString();
+            document.getElementById('summary-steps-goal').textContent = stepGoal.toLocaleString();
+            document.getElementById('summary-steps-kcal').textContent = `${stepKcal} kcal`;
+
+            const stepPercent = Math.min(100, Math.round((stepActual / stepGoal) * 100));
+            document.getElementById('progress-steps').style.width = `${stepPercent}%`;
+
+            // Goal/Gender Headers
+            document.getElementById('summary-goal-text').textContent = currentGoal.charAt(0).toUpperCase() + currentGoal.slice(1);
+            document.getElementById('summary-gender-text').textContent = currentGender.charAt(0).toUpperCase() + currentGender.slice(1);
+        }
+
+        // --- TAB SWITCHING & RENDERING ---
+
+        function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.add('hidden');
             });
-            document.getElementById(targetId).classList.remove('hidden');
+            document.getElementById(tabName).classList.remove('hidden');
 
-            document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('active');
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
             });
-            document.querySelector(`.tab-button[data-tab="${targetId}"]`).classList.add('active');
+            document.querySelector(`.tab-button[data-tab="${tabName}"]`).classList.add('active');
             
-            // Re-render only the relevant view on switch
-            if (targetId === 'summary') renderSummary();
-            if (targetId === 'exercise') renderWorkout();
-            if (targetId === 'food') renderFoodLog();
-            if (targetId === 'steps') renderStepsContent();
+            // Call the corresponding render function
+            if (tabName === 'summary') renderSummary();
+            if (tabName === 'exercise') renderWorkout();
+            if (tabName === 'food') renderFood();
+            if (tabName === 'steps') renderSteps();
         }
 
         document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', (e) => {
-                switchTab(e.target.getAttribute('data-tab'));
-            });
+            button.addEventListener('click', () => switchTab(button.getAttribute('data-tab')));
         });
 
-        window.handleSnapshot = (targetId) => {
-            const targetElement = document.getElementById(targetId);
-            const footer = document.getElementById('snapshot-footer');
-            const snapshotDate = document.getElementById('snapshot-date');
-            const mainAppDiv = document.getElementById('app'); // Get the main app container
-
-            snapshotDate.textContent = new Date().toLocaleString();
+        function renderAll() {
+            loadAllLogs(); 
+            renderGoalTip();
+            renderDaySelector();
             
-            // Move footer INSIDE the element to be screenshotted
-            targetElement.appendChild(footer);
+            document.querySelectorAll('.day-button').forEach(button => {
+                button.classList.remove('active');
+                if (parseInt(button.getAttribute('data-day')) === selectedDay) {
+                    button.classList.add('active');
+                }
+            });
+
+            // Re-render the active tab
+            const activeTab = document.querySelector('.tab-button.active')?.getAttribute('data-tab') || 'summary';
+            switchTab(activeTab);
+        }
+        
+        // --- SCREENSHOT LOGIC ---
+        window.handleSnapshot = async (elementId) => {
+            const element = document.getElementById(elementId);
+            const date = new Date().toLocaleString();
+
+            const footer = document.getElementById('snapshot-footer');
+            document.getElementById('snapshot-date').textContent = date;
+            
+            const originalPadding = element.style.padding;
+            const originalBg = element.style.backgroundColor;
+
+            // Temporarily adjust for better screenshot
+            element.style.padding = '20px';
+            element.style.backgroundColor = 'white'; 
             footer.classList.remove('hidden');
+            
+            try {
+                const canvas = await html2canvas(element, {
+                    scale: 2, 
+                    useCORS: true,
+                    allowTaint: true,
+                });
 
-            html2canvas(targetElement, {
-                scale: 2, 
-                useCORS: true,
-                logging: false,
-                backgroundColor: '#ffffff'
-            }).then(canvas => {
-                // Move footer OUTSIDE the snapshot element
-                footer.classList.add('hidden');
-                mainAppDiv.appendChild(footer); // Move it back to the #app container
-
+                // Create download link
                 const image = canvas.toDataURL('image/png');
                 const link = document.createElement('a');
-                const filename = `Berns100Days_${targetId}_Day${selectedDay}_${new Date().toISOString().split('T')[0]}.png`;
                 link.href = image;
-                link.download = filename;
+                link.download = `Berns100Day_Day${selectedDay}_${elementId}.png`;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-            }).catch(error => {
-                console.error("Snapshot failed:", error);
-                // Ensure the footer is moved back even on failure
+                
+                showErrorModal("Snapshot downloaded successfully! Check your downloads folder.");
+
+            } catch (error) {
+                console.error('Screenshot failed:', error);
+                showErrorModal('Failed to generate snapshot. Try refreshing the page or checking console for errors.');
+            } finally {
+                // Restore original styles
+                element.style.padding = originalPadding;
+                element.style.backgroundColor = originalBg;
                 footer.classList.add('hidden');
-                mainAppDiv.appendChild(footer);
-                showErrorModal("Snapshot download failed. Check console for details.");
-            });
+            }
         };
 
-        function renderAll() {
-            renderDaySelector();
-            renderGoalTip();
-            const activeTabButton = document.querySelector('.tab-button.active');
-            const activeTab = activeTabButton ? activeTabButton.getAttribute('data-tab') : 'summary';
-            switchTab(activeTab); 
-        }
-        
-        // --- APP ENTRY POINT ---
+        // --- INITIALIZATION ---
         window.onload = function() {
-            loadAllLogs();
-            const challengeDay = getChallengeDay();
-            
-            // Set initial day to the current challenge day or 1 if the current day > 100
-            selectedDay = Math.min(challengeDay, TOTAL_DAYS); 
-            
+            // Set the selected day to the current challenge day on load
+            selectedDay = getChallengeDay();
             renderAll();
-        }
+        };
+
     </script>
 </body>
 </html>
